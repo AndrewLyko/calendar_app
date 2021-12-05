@@ -3,7 +3,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 
-from users.models import UserDetail, User
+from users.models import UserDetail, CustomUser
 
 
 class NameForm(forms.Form):
@@ -15,7 +15,7 @@ class NameForm(forms.Form):
 
 class UserForm(forms.ModelForm):
     class Meta:
-        model = User
+        model = CustomUser
         fields = ['username', 'password', 'email']
 
     def save(self, commit=True, *args, **kwargs):
